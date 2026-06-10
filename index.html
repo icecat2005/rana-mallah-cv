@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rana Mallah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f6f1e7;
+    --paper-2: #efe6d6;
+    --card: #fffdf8;
+    --ink: #2a2520;
+    --ink-soft: #6a6052;
+    --ink-faint: #94897a;
+    --clay: #b05636;
+    --clay-deep: #8f4225;
+    --clay-soft: #d9a883;
+    --builder: #9f2f24;
+    --builder-soft: #f3d7cf;
+    --rule: #e4d9c5;
+    --rule-soft: #efe7d8;
+    --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --text: "Newsreader", "Iowan Old Style", Georgia, serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--text);
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(176, 86, 54, 0.06), transparent 42%),
+      radial-gradient(circle at 85% 8%, rgba(176, 86, 54, 0.05), transparent 38%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .screen {
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: grid;
+    place-items: center;
+    padding: clamp(28px, 5vw, 72px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .screen::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(228, 217, 197, 0.72);
+    border-radius: 30px;
+    pointer-events: none;
+  }
+
+  .screen-inner {
+    width: min(1120px, 100%);
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    margin: 0 0 18px;
+    font-family: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    color: var(--clay-deep);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--serif);
+    color: var(--ink);
+    letter-spacing: -0.4px;
+  }
+
+  h1 {
+    max-width: 9ch;
+    margin: 0;
+    font-size: clamp(72px, 14vw, 166px);
+    font-weight: 600;
+    line-height: 0.88;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(38px, 7vw, 84px);
+    font-weight: 600;
+    line-height: 0.95;
+  }
+
+  h3 { margin: 0; font-size: 24px; font-weight: 600; }
+
+  p { margin: 0; }
+
+  .site-pills,
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .site-pills a,
+  .contact-links a,
+  .mini-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 7px 15px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.76);
+    color: var(--ink-soft);
+    box-shadow: 0 7px 18px rgba(60, 45, 25, 0.08);
+    transition: transform 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .site-pills a:hover,
+  .contact-links a:hover,
+  .mini-pill:hover {
+    color: var(--clay-deep);
+    border-color: var(--clay-soft);
+    transform: translateY(-2px);
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.9fr) minmax(320px, 1fr);
+    gap: clamp(34px, 7vw, 92px);
+    align-items: end;
+  }
+
+  .intro-name {
+    align-self: end;
+  }
+
+  .intro-copy {
+    max-width: 650px;
+    padding-bottom: 10px;
+  }
+
+  .tagline {
+    margin: 24px 0 0;
+    max-width: 15ch;
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.7vw, 34px);
+    line-height: 1.12;
+    color: var(--clay-deep);
+  }
+
+  .bio {
+    max-width: 58ch;
+    margin-bottom: 26px;
+    font-size: clamp(19px, 2vw, 24px);
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .screen-count {
+    position: absolute;
+    right: clamp(26px, 4vw, 54px);
+    bottom: clamp(22px, 4vw, 42px);
+    z-index: 2;
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    color: var(--ink-faint);
+  }
+
+  .scroll-note {
+    position: absolute;
+    left: clamp(26px, 4vw, 54px);
+    bottom: clamp(22px, 4vw, 42px);
+    z-index: 2;
+    color: var(--ink-faint);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  .universe-screen { padding-inline: clamp(20px, 3vw, 52px); }
+
+  .universe-header {
+    position: absolute;
+    top: clamp(34px, 5vw, 58px);
+    left: clamp(34px, 5vw, 72px);
+    z-index: 4;
+    max-width: 430px;
+  }
+
+  .universe-header h2 {
+    font-size: clamp(52px, 6.4vw, 96px);
+    line-height: 0.9;
+  }
+
+  .universe-header p {
+    margin-top: 14px;
+    color: var(--ink-soft);
+    font-size: 19px;
+    max-width: 28ch;
+  }
+
+  .portrait-universe {
+    width: min(1280px, 100%);
+    min-height: min(920px, 82dvh);
+    margin: 3dvh auto 0;
+    position: relative;
+  }
+
+  .portrait-anchor {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(64vw, 820px);
+    min-width: 390px;
+    transform: translate(-50%, -46%);
+  }
+
+  .portrait-disc {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    width: 78%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, var(--clay-soft) 0%, var(--clay) 82%);
+    box-shadow: 0 24px 70px rgba(143, 66, 37, 0.25);
+  }
+
+  .portrait-disc::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(255, 253, 248, 0.35);
+    border-radius: 50%;
+  }
+
+  .portrait {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: min(760px, 72dvh);
+    height: auto;
+    margin: 0 auto;
+    filter: drop-shadow(0 15px 18px rgba(60, 45, 25, 0.22));
+    -webkit-mask-image: linear-gradient(to bottom, #000 81%, transparent 99%);
+    mask-image: linear-gradient(to bottom, #000 81%, transparent 99%);
+  }
+
+  .orbit-pill {
+    position: absolute;
+    z-index: 3;
+    min-height: 114px;
+    max-width: 585px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: rgba(255, 253, 248, 0.9);
+    color: var(--ink-soft);
+    box-shadow: 0 14px 28px rgba(60, 45, 25, 0.13);
+    padding: 20px 33px 20px 21px;
+    font: inherit;
+    font-size: clamp(25px, 2.32vw, 32px);
+    line-height: 1.1;
+    cursor: pointer;
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, color 180ms ease;
+  }
+
+  .logo-mark {
+    width: 111px;
+    height: 69px;
+    object-fit: contain;
+    border-radius: 20px;
+    background: rgba(255, 253, 248, 0.9);
+    border: 1px solid var(--rule-soft);
+    padding: 11px;
+  }
+
+  .logo-mark.mck {
+    width: 132px;
+    height: 69px;
+    padding: 0;
+    background-image: url("cv-assets/logo-mckinsey.svg");
+    background-repeat: no-repeat;
+    background-size: 95% auto;
+    background-position: center;
+    overflow: hidden;
+    object-fit: unset;
+    object-position: left center;
+  }
+
+  .logo-mark.spx {
+    border-radius: 18px;
+    padding: 8px;
+  }
+
+  .logo-mark.community {
+    width: 66px;
+    padding: 0;
+    background: #4938c8;
+    border-color: #4938c8;
+    border-radius: 50%;
+  }
+
+  .logo-mark.text-logo {
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--builder);
+    background: var(--builder-soft);
+    border-color: #d88f7f;
+  }
+
+  .logo-mark.news-logo {
+    width: 75px;
+    height: 72px;
+    padding: 0;
+    border-radius: 20px;
+    border-color: #d6d6d1;
+    background: #55595c;
+    background-image: url("cv-assets/logo-newspeak.png");
+    background-repeat: no-repeat;
+    background-size: 89% auto;
+    background-position: 50% 33%;
+    overflow: hidden;
+    object-fit: unset;
+  }
+
+  .pill-label {
+    display: block;
+    color: inherit;
+  }
+
+  .pill-org {
+    display: block;
+    margin-top: 5px;
+    color: var(--ink-faint);
+    font-size: 17px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  .orbit-pill:hover,
+  .orbit-pill:focus-visible {
+    color: var(--clay-deep);
+    border-color: var(--clay-soft);
+    box-shadow: 0 18px 36px rgba(60, 45, 25, 0.18);
+    outline: none;
+    transform: translateY(-4px) rotate(0deg) !important;
+  }
+
+  .orbit-pill:focus-visible,
+  .modal-close:focus-visible {
+    outline: 3px solid rgba(176, 86, 54, 0.28);
+    outline-offset: 4px;
+  }
+
+  .orbit-pill.builder {
+    background: linear-gradient(145deg, #f9fffb, var(--builder-soft));
+    border-color: #d88f7f;
+    color: var(--builder);
+  }
+
+  .orbit-pill.builder .pill-org { color: #9d5b50; }
+
+  .orbit-pill.pos-1 { top: 11%; left: -14%; transform: rotate(-5deg); }
+  .orbit-pill.pos-2 { top: 6%; right: -14%; transform: rotate(4deg); }
+  .orbit-pill.pos-3 { top: 35%; left: -16%; transform: rotate(3deg); }
+  .orbit-pill.pos-4 { top: 33%; right: -15%; transform: rotate(-4deg); }
+  .orbit-pill.pos-5 { bottom: 27%; left: -12%; transform: rotate(-2deg); }
+  .orbit-pill.pos-6 { bottom: 25%; right: -12%; transform: rotate(3deg); }
+  .orbit-pill.pos-7 { bottom: 5%; left: 12%; transform: rotate(4deg); }
+  .orbit-pill.pos-8 { bottom: 5%; right: 12%; transform: rotate(-3deg); }
+
+  .cred-grid {
+    display: grid;
+    width: min(1280px, 100%);
+    grid-template-columns: minmax(240px, 0.62fr) minmax(740px, 1.7fr);
+    gap: clamp(24px, 4vw, 56px);
+    align-items: center;
+  }
+
+  .cred-intro p {
+    max-width: 34ch;
+    margin-top: 18px;
+    color: var(--ink-soft);
+    font-size: 20px;
+  }
+
+  .cred-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+  }
+
+  .cred-row-label {
+    grid-column: 1 / -1;
+    margin: 0 0 -2px;
+    color: var(--clay-deep);
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cred-row-icon {
+    width: 18px;
+    height: 18px;
+    color: currentColor;
+    stroke-width: 1.8;
+  }
+
+  .cred-card {
+    position: relative;
+    min-height: 170px;
+    padding: 46px 22px 22px;
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    background: rgba(255, 253, 248, 0.8);
+    box-shadow: 0 10px 28px rgba(60, 45, 25, 0.07);
+  }
+
+  .cred-card h3 {
+    white-space: nowrap;
+  }
+
+  .cred-card.work { border-left: 4px solid var(--clay-soft); }
+  .cred-card.education { border-left: 4px solid #c3b391; }
+
+  .cred-card .label {
+    margin-bottom: 18px;
+    color: var(--clay-deep);
+    font-size: 12px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  .cred-card .role {
+    margin-top: 8px;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+
+  .cred-card .role span {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cred-card .role span + span {
+    margin-top: 7px;
+  }
+
+  .role-icon {
+    flex: 0 0 auto;
+    width: 15px;
+    height: 15px;
+    margin-top: 0.22em;
+    color: var(--clay-deep);
+    opacity: 0.72;
+    stroke-width: 1.8;
+  }
+
+  .cred-card .date {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    margin: 0;
+    color: var(--ink-faint);
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .cred-card .meta {
+    margin-top: 12px;
+    color: var(--ink-faint);
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .contact-screen .screen-inner {
+    display: grid;
+    grid-template-columns: 1fr minmax(320px, 0.76fr);
+    gap: clamp(30px, 6vw, 84px);
+    align-items: center;
+  }
+
+  .contact-line {
+    margin-top: 22px;
+    max-width: 44ch;
+    color: var(--ink-soft);
+    font-size: 22px;
+  }
+
+  .contact-card {
+    padding: clamp(26px, 4vw, 44px);
+    border: 1px solid var(--rule);
+    border-radius: 26px;
+    background: rgba(255, 253, 248, 0.82);
+    box-shadow: 0 18px 46px rgba(60, 45, 25, 0.1);
+  }
+
+  .contact-card h3 {
+    margin-bottom: 18px;
+    font-size: 30px;
+  }
+
+  .contact-links { flex-direction: column; }
+  .contact-links a { justify-content: space-between; width: 100%; }
+
+  .project-modal {
+    width: min(840px, calc(100% - 34px));
+    max-height: min(780px, calc(100dvh - 34px));
+    padding: 0;
+    border: 1px solid var(--rule);
+    border-radius: 28px;
+    color: var(--ink);
+    background: var(--card);
+    box-shadow: 0 28px 90px rgba(42, 37, 32, 0.28);
+  }
+
+  .project-modal::backdrop {
+    background: rgba(42, 37, 32, 0.42);
+    backdrop-filter: blur(6px);
+  }
+
+  .modal-shell {
+    padding: clamp(24px, 4vw, 42px);
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink-soft);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .modal-kicker {
+    margin-bottom: 10px;
+    color: var(--clay-deep);
+    font-size: 12px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+  }
+
+  .modal-body h3 {
+    margin: 0 54px 14px 0;
+    max-width: 28ch;
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1.02;
+  }
+
+  .modal-body .summary {
+    margin-bottom: 24px;
+    color: var(--ink-soft);
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  .modal-body dl {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 15px 24px;
+    margin: 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule-soft);
+  }
+
+  .modal-body dt {
+    color: var(--clay-deep);
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    line-height: 1.35;
+    padding-top: 3px;
+    text-transform: uppercase;
+  }
+
+  .modal-body dd {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .modal-body a {
+    color: var(--clay-deep);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+  }
+
+  .modal-body a:hover {
+    color: var(--builder);
+  }
+
+  .modal-visual {
+    margin: 22px 0 0;
+    overflow: hidden;
+    border: 1px solid var(--rule-soft);
+    border-radius: 18px;
+    background: #111620;
+    box-shadow: 0 16px 34px rgba(42, 37, 32, 0.16);
+  }
+
+  .modal-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .modal-body p + p { margin-top: 12px; }
+
+  @media (max-width: 900px) {
+    html { scroll-snap-type: y proximity; }
+    body { overflow-x: hidden; }
+    .screen { min-height: 100svh; padding: 34px 22px; overflow: visible; }
+    .screen::before { inset: 10px; border-radius: 24px; }
+    .intro-grid,
+    .cred-grid,
+    .contact-screen .screen-inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    h1 { font-size: clamp(66px, 22vw, 116px); }
+    .screen-count,
+    .scroll-note { display: none; }
+    .universe-header {
+      position: relative;
+      inset: auto;
+      margin: 0 auto 18px;
+      text-align: center;
+    }
+    .portrait-universe {
+      min-height: auto;
+      display: grid;
+      gap: 16px;
+      margin-top: 0;
+    }
+    .portrait-anchor {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: min(330px, 76vw);
+      min-width: 0;
+      margin: 0 auto;
+      transform: none;
+    }
+    .orbit-pill {
+      position: static;
+      width: 100%;
+      max-width: none;
+      min-height: 58px;
+      padding: 10px 14px 10px 10px;
+      border-radius: 30px;
+      font-size: clamp(16px, 4.7vw, 20px);
+      gap: 10px;
+      transform: none !important;
+      text-align: left;
+      grid-template-columns: auto 1fr;
+    }
+    .orbit-pill .logo-mark {
+      width: 58px;
+      height: 36px;
+      padding: 5px;
+      border-radius: 11px;
+    }
+    .orbit-pill .logo-mark.mck {
+      width: 76px;
+      height: 36px;
+      padding: 0;
+    }
+    .orbit-pill .logo-mark.community {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+    .orbit-pill .logo-mark.news-logo {
+      width: 42px;
+      height: 38px;
+      padding: 0;
+      border-radius: 10px;
+    }
+    .orbit-pill .logo-mark.text-logo {
+      font-size: 15px;
+    }
+    .orbit-pill .pill-org {
+      margin-top: 2px;
+      font-size: 10px;
+      letter-spacing: 0.8px;
+    }
+    .orbit-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .cred-cards {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .cred-row-label {
+      font-size: 12px;
+      gap: 6px;
+    }
+    .cred-row-icon {
+      width: 15px;
+      height: 15px;
+    }
+    .cred-card {
+      min-height: auto;
+      padding: 34px 16px 16px;
+      border-radius: 16px;
+    }
+    .cred-card h3 {
+      font-size: 22px;
+      white-space: normal;
+    }
+    .cred-card .role {
+      font-size: 14px;
+    }
+    .cred-card .role span {
+      gap: 6px;
+    }
+    .cred-card .role span + span {
+      margin-top: 5px;
+    }
+    .role-icon {
+      width: 13px;
+      height: 13px;
+    }
+    .cred-card .date {
+      top: 13px;
+      right: 16px;
+      font-size: 10px;
+      letter-spacing: 0.6px;
+    }
+    .cred-card .meta {
+      margin-top: 10px;
+      font-size: 11px;
+    }
+    .modal-body dl { grid-template-columns: 1fr; gap: 4px 0; }
+    .modal-body dd { margin-bottom: 12px; }
+  }
+
+  @media (max-width: 560px) {
+    .screen { place-items: start center; padding: 26px 22px; }
+    h1 { font-size: clamp(58px, 19vw, 92px); }
+    .tagline { margin-bottom: 18px; font-size: 21px; }
+    .bio { margin-bottom: 18px; font-size: 17px; line-height: 1.42; }
+    .site-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .site-pills a,
+    .mini-pill { justify-content: center; min-height: 36px; padding: 6px 12px; }
+    .orbit-list { grid-template-columns: 1fr; gap: 8px; }
+    .contact-links a { align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+
+  @media print {
+    html { scroll-snap-type: none; }
+    body { background: #fff; font-size: 11pt; }
+    .screen { min-height: auto; display: block; padding: 28px 0; overflow: visible; }
+    .screen::before,
+    .screen-count,
+    .scroll-note,
+    .project-modal { display: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <section class="screen intro-screen" id="intro" aria-labelledby="intro-title">
+    <div class="screen-inner intro-grid">
+      <div class="intro-name">
+        <h1 id="intro-title">Rana Mallah</h1>
+        <p class="tagline">Economist by training, advisor and investor by trade, builder by instinct.</p>
+      </div>
+      <div class="intro-copy">
+        <p class="bio">Hi, I'm Rana. I thrive on the kind of challenge that pulls me into a flow state: when things are messy and the stakes are high. My instinct is to make sense of the system first, then work my way through it iteratively: testing, building, learning, and looking for the more original answer. I trained as an economist, spent a couple of years in the middle of post-pandemic financial markets at a hedge fund, then consulting taught me how to really influence people. I move between the big picture and the detail, and I'd take first-principles thinking over a playbook any day. Outside work, you'll find me at a rave, off travelling somewhere new, or out biking on the trails.</p>
+        <nav class="site-pills" aria-label="Rana Mallah links">
+          <a href="https://lodestone.digital" target="_blank" rel="noopener">lodestone.digital</a>
+          <a href="https://github.com/icecat2005" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://ranastemple.substack.com" target="_blank" rel="noopener">Substack</a>
+          <a href="https://linkedin.com/in/rana-mallah-762099b3" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+    </div>
+    <p class="scroll-note">Scroll for the work universe</p>
+    <span class="screen-count">01 / 04</span>
+  </section>
+
+  <section class="screen universe-screen" id="work" aria-labelledby="work-title">
+    <div class="universe-header">
+      <p class="eyebrow">Experience snapshots</p>
+      <h2 id="work-title">Selected work</h2>
+    </div>
+
+    <div class="portrait-universe">
+      <div class="portrait-anchor" aria-hidden="true">
+        <div class="portrait-disc"></div>
+        <img class="portrait" src="cv-assets/professional-portrait-20220203.png" alt="" />
+      </div>
+
+      <div class="orbit-list" aria-label="Project detail controls">
+        <button class="orbit-pill pos-1" type="button" data-modal="ai-agents" aria-haspopup="dialog" aria-label="Built model-risk validation agents, McKinsey">
+          <span class="logo-mark mck" aria-hidden="true"></span>
+          <span class="pill-copy"><span class="pill-label">Built model-risk validation agents</span></span>
+        </button>
+        <button class="orbit-pill pos-2" type="button" data-modal="biopharma" aria-haspopup="dialog" aria-label="Assessed biopharma AI data readiness, McKinsey">
+          <span class="logo-mark mck" aria-hidden="true"></span>
+          <span class="pill-copy"><span class="pill-label">Assessed biopharma AI data readiness</span></span>
+        </button>
+        <button class="orbit-pill pos-3" type="button" data-modal="stablecoin" aria-haspopup="dialog" aria-label="Shaped stablecoin joint venture strategy, McKinsey">
+          <span class="logo-mark mck" aria-hidden="true"></span>
+          <span class="pill-copy"><span class="pill-label">Shaped stablecoin JV strategy</span></span>
+        </button>
+        <button class="orbit-pill pos-4" type="button" data-modal="rates" aria-haspopup="dialog" aria-label="Called the rate-hiking cycle, SPX Capital">
+          <img class="logo-mark spx" src="cv-assets/logo-spx.png" alt="" />
+          <span class="pill-copy"><span class="pill-label">Called the rate-hiking cycle</span></span>
+        </button>
+        <button class="orbit-pill pos-5" type="button" data-modal="frontier" aria-haspopup="dialog" aria-label="Ran sessions on frontier ideas, Newspeak House and ACX">
+          <span class="logo-mark news-logo" aria-hidden="true"></span>
+          <span class="pill-copy"><span class="pill-label">Ran sessions on frontier ideas</span></span>
+        </button>
+        <button class="orbit-pill pos-6" type="button" data-modal="challenge" aria-haspopup="dialog" aria-label="Put my thinking up for challenge, Manifest and LessOnline">
+          <img class="logo-mark community" src="cv-assets/logo-community.png" alt="" />
+          <span class="pill-copy"><span class="pill-label">Put my thinking up for challenge</span></span>
+        </button>
+        <button class="orbit-pill builder pos-7" type="button" data-modal="lodestone" aria-haspopup="dialog">
+          <span class="logo-mark text-logo" aria-hidden="true">L</span>
+          <span class="pill-copy"><span class="pill-label">Building Lodestone</span><span class="pill-org">Founder / developer</span></span>
+        </button>
+        <button class="orbit-pill builder pos-8" type="button" data-modal="maestro" aria-haspopup="dialog">
+          <span class="logo-mark text-logo" aria-hidden="true">M</span>
+          <span class="pill-copy"><span class="pill-label">Project Maestro</span><span class="pill-org">Founder / developer</span></span>
+        </button>
+      </div>
+    </div>
+    <span class="screen-count">02 / 04</span>
+  </section>
+
+  <section class="screen credentials-screen" id="credentials" aria-labelledby="credentials-title">
+    <div class="screen-inner cred-grid">
+      <div class="cred-intro">
+        <p class="eyebrow">Work + education</p>
+        <h2 id="credentials-title">Where I worked and studied</h2>
+      </div>
+      <div class="cred-cards" aria-label="Companies and education">
+        <p class="cred-row-label">
+          <svg class="cred-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M9 7V5.8C9 4.8 9.8 4 10.8 4h2.4c1 0 1.8.8 1.8 1.8V7" />
+            <path d="M4.5 8h15v10.5h-15z" />
+            <path d="M4.5 12.5h15" />
+            <path d="M10 12.5h4" />
+          </svg>
+          Employers
+        </p>
+        <article class="cred-card work">
+          <p class="date">Sep 2022 - Present</p>
+          <h3>McKinsey &amp; Company</h3>
+          <p class="role">
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 18 18 6" /><path d="M9 6h9v9" /></svg>
+              Business Analyst → Senior Associate
+            </span>
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3 4 7l8 4 8-4z" /><path d="M4 12l8 4 8-4" /><path d="M4 17l8 4 8-4" /></svg>
+              Strategy, Transformation &amp; Build
+            </span>
+          </p>
+          <p class="meta">London</p>
+        </article>
+        <article class="cred-card work">
+          <p class="date">Sep 2020 - Jul 2022</p>
+          <h3>SPX Capital</h3>
+          <p class="role">
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 18 18 6" /><path d="M9 6h9v9" /></svg>
+              Economic Analyst → Multi-Asset Analyst
+            </span>
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16.5 9 11l4 3 7-8" /><path d="M4 20h16" /></svg>
+              Alternative Investment
+            </span>
+          </p>
+          <p class="meta">London</p>
+        </article>
+        <p class="cred-row-label">
+          <svg class="cred-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 5.5h9a4 4 0 0 1 4 4V19H8.5A3.5 3.5 0 0 1 5 15.5z" />
+            <path d="M8.5 19A3.5 3.5 0 0 1 5 15.5V5.5" />
+            <path d="M8 9h7" />
+            <path d="M8 12h6" />
+          </svg>
+          Education
+        </p>
+        <article class="cred-card education">
+          <p class="date">2017 - 2020</p>
+          <h3>London School of Economics</h3>
+          <p class="role">
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 19V5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5" /><path d="M8 7h8" /><path d="M8 11h7" /></svg>
+              BSc Econometrics &amp; Mathematical Economics (EME)
+            </span>
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3 14.7 8.5l6.1.9-4.4 4.3 1 6.1L12 16.9l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" /></svg>
+              First-Class Honours
+            </span>
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M8 21h8" /><path d="M12 17v4" /><path d="M7 4h10v5a5 5 0 0 1-10 0z" /><path d="M5 6H3v2a4 4 0 0 0 4 4" /><path d="M19 6h2v2a4 4 0 0 1-4 4" /></svg>
+              Premchand Prize: highest mark in senior-year Monetary Economics
+            </span>
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 19V5" /><path d="M5 19h14" /><path d="M8 15l3-3 3 2 4-6" /></svg>
+              Top 5% in Quantitative Finance and Maths
+            </span>
+          </p>
+        </article>
+        <article class="cred-card education">
+          <p class="date">2016 - 2017</p>
+          <h3>York College</h3>
+          <p class="role">
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 19V5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5" /><path d="M8 7h8" /><path d="M8 11h7" /></svg>
+              A-Levels A*A*A*: Mathematics, Further Mathematics, Biology
+            </span>
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 6v6l4 2" /><path d="M21 12a9 9 0 1 1-9-9" /></svg>
+              Completed the two-year course in 9 months
+            </span>
+            <span>
+              <svg class="role-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M8 21h8" /><path d="M12 17v4" /><path d="M7 4h10v5a5 5 0 0 1-10 0z" /><path d="M5 6H3v2a4 4 0 0 0 4 4" /><path d="M19 6h2v2a4 4 0 0 1-4 4" /></svg>
+              A-Level Student of the Year
+            </span>
+          </p>
+        </article>
+      </div>
+    </div>
+    <span class="screen-count">03 / 04</span>
+  </section>
+
+  <section class="screen contact-screen" id="contact" aria-labelledby="contact-title">
+    <div class="screen-inner">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let's solve something hard together</h2>
+      </div>
+      <aside class="contact-card" aria-label="Contact links">
+        <h3>Find me here</h3>
+        <nav class="contact-links">
+          <a href="https://lodestone.digital" target="_blank" rel="noopener"><span>Lodestone</span><span>lodestone.digital</span></a>
+          <a href="https://github.com/icecat2005" target="_blank" rel="noopener"><span>GitHub</span><span>github.com/icecat2005</span></a>
+          <a href="https://ranastemple.substack.com" target="_blank" rel="noopener"><span>Substack</span><span>ranastemple.substack.com</span></a>
+          <a href="https://linkedin.com/in/rana-mallah-762099b3" target="_blank" rel="noopener"><span>LinkedIn</span><span>Profile</span></a>
+        </nav>
+      </aside>
+    </div>
+    <span class="screen-count">04 / 04</span>
+  </section>
+</main>
+
+<dialog class="project-modal" id="project-modal" aria-labelledby="modal-title">
+  <div class="modal-shell">
+    <button class="modal-close" type="button" aria-label="Close project details">&times;</button>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</dialog>
+
+<template id="modal-ai-agents">
+  <p class="modal-kicker">McKinsey</p>
+  <h3 id="modal-title">Led the build of model-risk validation agents for a bank's MRM unit</h3>
+  <dl>
+    <dt>Nature of work</dt><dd>Built agentic AI use cases for a bank's model risk management (MRM) unit: discovery -> pilot.</dd>
+    <dt>Role / impact</dt><dd>Led the project end-to-end: unblocked access, defined scope, translated validator needs into the build, and kept the team moving across technical delivery, stakeholder management, and user research.</dd>
+    <dt>Challenges</dt><dd>Unblocked API, system, and data-access approvals across the bank IT; translated fuzzy validator pain points into concrete agents; aligned sponsors on pilot vs. long-term vision.</dd>
+    <dt>People</dt><dd>Mixed McKinsey-bank engineering team, bank IT, independent validators, and project sponsors.</dd>
+  </dl>
+</template>
+
+<template id="modal-biopharma">
+  <p class="modal-kicker">McKinsey</p>
+  <h3 id="modal-title">Assessed biopharma AI data readiness for foundational models</h3>
+  <dl>
+    <dt>Nature of work</dt><dd>Assessed how ready a global biopharma's proprietary data was for AI - across generation, transfer, handling, storage, interconnectivity, cataloguing, and cross-BU access - to enable foundational models built on trial, chemical/experimental, and bioassay data.</dd>
+    <dt>Role / impact</dt><dd>When the engagement lost its engagement manager (EM) mid-stream, stepped up to lead the content alongside the partner/AP - ran the business-unit workshops, built the assessment instrument, and set the target-state vision. Designed and built the survey end-to-end across UX, data handling, analytics, and dashboarding the results to share.</dd>
+    <dt>Challenges</dt><dd>Tight timeline on an already-late project; no engagement manager; and no mandate for clean data - the org optimised for drug results, not data quality.</dd>
+    <dt>People</dt><dd>Partner &amp; associate partner; internal firm experts; project sponsors across multiple business units.</dd>
+  </dl>
+</template>
+
+<template id="modal-stablecoin">
+  <p class="modal-kicker">McKinsey</p>
+  <h3 id="modal-title">Shaped stablecoin strategy for a bank-backed joint venture (JV)</h3>
+  <dl>
+    <dt>Nature of work</dt><dd>Advised on a stablecoin joint venture in a Middle Eastern market - a new-client with significant capital and a major bank involved.</dd>
+    <dt>Role / impact</dt><dd>Built the market-sizing model that anchored the advice; shaped the client's vision by steering them off low-value use cases toward higher-revenue ones and helping them distinguish small from large revenue pools. Used crypto-market fluency to translate terminology and mechanics for the team and client.</dd>
+    <dt>Challenges</dt><dd>Fast start, very tight timeline; high stakes to win a new client's trust; thin internal expertise; an engagement manager (EM) new to crypto, so I carried much of the domain for the team.</dd>
+    <dt>People</dt><dd>Client bank and joint venture sponsors, internal topic experts, and the engagement manager.</dd>
+  </dl>
+</template>
+
+<template id="modal-rates">
+  <p class="modal-kicker">SPX Capital</p>
+  <h3 id="modal-title">Called the post-pandemic Fed rate-hiking cycle early</h3>
+  <dl>
+    <dt>Nature of work</dt><dd>Independent macro research across inflation and labour: modelled post-pandemic US inflation expectations with complex Bayesian methods, mapped them to the Fed funds path, and used granular labour-force data to forecast NFP.</dd>
+    <dt>Role / impact</dt><dd>Joined a newly-forming PM team (~$20bn) with a broad, unstructured mandate and ran with it. Built predictive engines including: an inflation-expectations model -> Fed rate path (called &gt;=4.5% in Nov 2021, a contrarian view versus market pricing at the time; reality hit 5%), and a labour model forecasting US employment flows / non-farm payrolls ahead of releases.</dd>
+    <dt>Challenges</dt><dd>Holding credibility while the models took months to build - delivering interim results and keeping conviction before the call was proven.</dd>
+    <dt>People</dt><dd>Portfolio manager, broader fund team.</dd>
+  </dl>
+</template>
+
+<template id="modal-frontier">
+  <p class="modal-kicker">Newspeak House / ACX</p>
+  <h3 id="modal-title">Ran early sessions on AI agents as co-workers</h3>
+  <dl>
+    <dt>Nature of work</dt><dd>Engaging the rationalist / civic-tech community on frontier questions. Ran a session on AI agents as co-workers in early 2025 - well before the late-2025 surge.</dd>
+    <dt>Role / impact</dt><dd>Convened and ran sessions at community meetups, getting people to engage with emerging topics before they were obvious. Spotted and framed the agents-as-coworkers conversation early.</dd>
+    <dt>Challenges</dt><dd>Getting people to engage with a not-yet-obvious idea; surfacing how defensive people get about AI changing how we work.</dd>
+    <dt>People</dt><dd>ACX, Newspeak House, and rationalist / civic-tech community attendees.</dd>
+  </dl>
+</template>
+
+<template id="modal-challenge">
+  <p class="modal-kicker">Manifest / LessOnline</p>
+  <h3 id="modal-title">Put life-design and prediction-market frameworks up for challenge</h3>
+  <dl>
+    <dt>Nature of work</dt><dd>Two sessions: a framework for living a good life (life objective -> instrumental objectives), and quantitative economic modelling of prediction markets - both built to engage people and gather perspectives.</dd>
+    <dt>Role / impact</dt><dd>Gave talks / ran sessions at unconferences, presenting my own frameworks to wider discussion with sharp audiences to stress-test both personal models and applied economic modelling.</dd>
+    <dt>Challenges</dt><dd>Putting personal frameworks and models in front of a sharp audience and inviting them to poke holes.</dd>
+    <dt>People</dt><dd>Manifest / LessOnline attendees.</dd>
+  </dl>
+</template>
+
+<template id="modal-lodestone">
+  <p class="modal-kicker">WIP · lodestone.digital</p>
+  <h3 id="modal-title">Building Lodestone, a project-level AI operating system</h3>
+  <p>A persistent AI operating system deployed at the project level - it ingests every signal, updates every output, and compounds quality each daily cycle, so the team can focus on being in the room and making decisions.</p>
+  <p><a href="https://lodestone.digital" target="_blank" rel="noopener">lodestone.digital</a></p>
+</template>
+
+<template id="modal-maestro">
+  <p class="modal-kicker">WIP · agent-orchestration tool</p>
+  <h3 id="modal-title">Building Project Maestro for orchestrating teams of AI agents</h3>
+  <p>Reimagining Git's branch/merge model into a way to lead a team of AI agents - the way a consultant runs parallel workstreams. Git is great for backup and revert when an agent goes wrong, but it isn't built for leading a team.</p>
+  <p>The vision: see swim lanes of workstreams moving forward, branching, merging, with dependencies - run agents in parallel at scale and know where work depends and converges. Take Git data, show it differently, with extra signals layered on top.</p>
+  <figure class="modal-visual">
+    <img src="cv-assets/project-maestro-visualizer.png" alt="Dark interface mockup of a branch and worktree visualizer with timelines, branches, and worktree status columns." />
+  </figure>
+</template>
+
+<script>
+  const modal = document.getElementById('project-modal');
+  const modalBody = document.getElementById('modal-body');
+  const closeButton = modal.querySelector('.modal-close');
+
+  document.querySelectorAll('[data-modal]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const template = document.getElementById(`modal-${button.dataset.modal}`);
+      if (!template) return;
+      modalBody.replaceChildren(template.content.cloneNode(true));
+      modal.showModal();
+      closeButton.focus();
+    });
+  });
+
+  closeButton.addEventListener('click', () => modal.close());
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.close();
+    }
+  });
+</script>
+</body>
+</html>
