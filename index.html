@@ -782,6 +782,79 @@
     .modal-body dd { margin-bottom: 12px; }
   }
 
+  @media (min-width: 901px) and (max-width: 1180px) {
+    .universe-screen {
+      padding-inline: 24px;
+      overflow: hidden;
+    }
+    .universe-header {
+      top: 34px;
+      left: 44px;
+      max-width: 300px;
+    }
+    .universe-header h2 {
+      font-size: clamp(58px, 8vw, 78px);
+    }
+    .portrait-universe {
+      width: min(900px, 88vw);
+      min-height: min(760px, 78dvh);
+      margin-top: 4dvh;
+    }
+    .portrait-anchor {
+      width: min(52vw, 560px);
+      min-width: 320px;
+    }
+    .portrait {
+      max-height: min(620px, 64dvh);
+    }
+    .orbit-pill {
+      min-height: 76px;
+      max-width: 365px;
+      padding: 12px 22px 12px 12px;
+      font-size: clamp(18px, 2.15vw, 24px);
+      gap: 14px;
+    }
+    .orbit-pill.builder {
+      max-width: 300px;
+    }
+    .logo-mark {
+      width: 76px;
+      height: 48px;
+      padding: 7px;
+      border-radius: 14px;
+    }
+    .logo-mark.mck {
+      width: 94px;
+      height: 48px;
+    }
+    .logo-mark.news-logo {
+      width: 54px;
+      height: 52px;
+      border-radius: 15px;
+    }
+    .logo-mark.community {
+      width: 52px;
+      height: 52px;
+    }
+    .logo-mark.text-logo {
+      width: 60px;
+      height: 48px;
+      font-size: 20px;
+    }
+    .pill-org {
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+    .orbit-pill.pos-1 { top: 18%; left: 0; }
+    .orbit-pill.pos-2 { top: 13%; right: 0; }
+    .orbit-pill.pos-3 { top: 39%; left: 0; }
+    .orbit-pill.pos-4 { top: 37%; right: 0; }
+    .orbit-pill.pos-5 { bottom: 25%; left: 0; }
+    .orbit-pill.pos-6 { bottom: 24%; right: 0; }
+    .orbit-pill.pos-7 { bottom: 5%; left: 8%; }
+    .orbit-pill.pos-8 { bottom: 5%; right: 8%; }
+  }
+
   @media (max-width: 560px) {
     .screen { place-items: start center; padding: 26px 22px; }
     h1 { font-size: clamp(58px, 19vw, 92px); }
