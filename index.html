@@ -70,7 +70,7 @@
   }
 
   .screen-inner {
-    width: min(1120px, 100%);
+    width: min(1200px, 100%);
     position: relative;
     z-index: 1;
   }
@@ -103,7 +103,7 @@
 
   h2 {
     margin: 0;
-    font-size: clamp(38px, 7vw, 84px);
+    font-size: clamp(40px, 5vw, 72px);
     font-weight: 600;
     line-height: 0.95;
   }
@@ -206,8 +206,7 @@
   }
 
   .universe-header h2 {
-    font-size: clamp(52px, 6.4vw, 96px);
-    line-height: 0.9;
+    line-height: 0.95;
   }
 
   .universe-header p {
@@ -218,7 +217,7 @@
   }
 
   .portrait-universe {
-    width: min(1280px, 100%);
+    width: min(1200px, 100%);
     min-height: min(920px, 82dvh);
     margin: 3dvh auto 0;
     position: relative;
@@ -337,6 +336,12 @@
     border-color: #d88f7f;
   }
 
+  .logo-mark.text-logo.neutral {
+    color: var(--ink-soft);
+    background: rgba(255, 253, 248, 0.9);
+    border-color: var(--rule-soft);
+  }
+
   .logo-mark.news-logo {
     width: 75px;
     height: 72px;
@@ -400,8 +405,8 @@
 
   .cred-grid {
     display: grid;
-    width: min(1280px, 100%);
-    grid-template-columns: minmax(240px, 0.62fr) minmax(740px, 1.7fr);
+    width: min(1200px, 100%);
+    grid-template-columns: minmax(240px, 0.7fr) minmax(680px, 1.8fr);
     gap: clamp(24px, 4vw, 56px);
     align-items: center;
   }
@@ -509,6 +514,191 @@
     text-transform: uppercase;
   }
 
+  .references-screen {
+    background-image:
+      radial-gradient(circle at 12% 22%, rgba(176, 86, 54, 0.07), transparent 40%),
+      radial-gradient(circle at 88% 80%, rgba(159, 47, 36, 0.05), transparent 42%);
+  }
+
+  .references-grid {
+    display: grid;
+    width: min(1200px, 100%);
+    grid-template-columns: minmax(250px, 0.74fr) minmax(0, 2fr);
+    gap: clamp(34px, 5vw, 88px);
+    align-items: center;
+  }
+
+  .references-intro {
+    align-self: center;
+  }
+
+  .references-intro .eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .references-intro h2 {
+    line-height: 0.95;
+  }
+
+  .intro-rule {
+    width: 64px;
+    height: 3px;
+    margin-top: 28px;
+    border-radius: 2px;
+    background: var(--clay);
+    opacity: 0.85;
+    transform-origin: left center;
+  }
+
+  .reference-cards {
+    columns: 2;
+    column-gap: clamp(30px, 3vw, 54px);
+  }
+
+  .reference-card {
+    position: relative;
+    break-inside: avoid;
+    margin: 0 0 clamp(24px, 2.6vw, 40px);
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .reference-card::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--clay);
+    transition: width 480ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .reference-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .reference-card:hover::after {
+    width: 100%;
+  }
+
+  .reference-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .reference-index {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--clay);
+    letter-spacing: 0.5px;
+    transition: color 260ms ease, transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .reference-card:hover .reference-index {
+    color: var(--clay-deep);
+    transform: translateY(-2px);
+  }
+
+  .reference-label {
+    margin: 0;
+    color: var(--clay-deep);
+    font-size: 13px;
+    letter-spacing: 0.2px;
+  }
+
+  .reference-card blockquote {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(19px, 1.5vw, 25px);
+    line-height: 1.28;
+    letter-spacing: -0.2px;
+  }
+
+  .reference-card strong {
+    color: var(--clay-deep);
+    font-weight: 600;
+    background-image: linear-gradient(transparent 60%, rgba(217, 168, 131, 0.5) 0);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .reference-card:hover strong {
+    background-size: 100% 100%;
+  }
+
+  /* Scroll-triggered reveal (progressive enhancement: hidden only once JS arms it) */
+  .references-screen.reveal-ready .references-intro h2,
+  .references-screen.reveal-ready .intro-rule,
+  .references-screen.reveal-ready .reference-card {
+    opacity: 0;
+  }
+
+  .references-screen.reveal-ready.is-visible .references-intro h2 {
+    animation: ref-rise 780ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms both;
+  }
+
+  .references-screen.reveal-ready.is-visible .intro-rule {
+    animation: intro-rule-grow 760ms cubic-bezier(0.22, 0.61, 0.36, 1) 360ms both;
+  }
+
+  .references-screen.reveal-ready.is-visible .reference-card {
+    animation: reference-arrive 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .references-screen.reveal-ready.is-visible .reference-card:nth-child(1) { animation-delay: 240ms; }
+  .references-screen.reveal-ready.is-visible .reference-card:nth-child(2) { animation-delay: 340ms; }
+  .references-screen.reveal-ready.is-visible .reference-card:nth-child(3) { animation-delay: 440ms; }
+  .references-screen.reveal-ready.is-visible .reference-card:nth-child(4) { animation-delay: 540ms; }
+  .references-screen.reveal-ready.is-visible .reference-card:nth-child(5) { animation-delay: 640ms; }
+
+  @keyframes ref-rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes reference-arrive {
+    0% { opacity: 0; transform: translateY(28px) scale(0.985); filter: blur(5px); }
+    55% { filter: blur(0); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+
+  @keyframes intro-rule-grow {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 0.85; }
+  }
+
+  /* Generic scroll reveal — mirrors the references treatment for every other screen */
+  .screen.reveal-ready [data-reveal] {
+    opacity: 0;
+  }
+
+  .screen.reveal-ready.is-visible [data-reveal] {
+    animation: ref-rise 760ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  .screen.reveal-ready.is-visible [data-reveal="fade"] {
+    animation-name: soft-in;
+  }
+
+  .screen.reveal-ready.is-visible .intro-rule[data-reveal] {
+    animation-name: intro-rule-grow;
+  }
+
+  @keyframes soft-in {
+    0% { opacity: 0; filter: blur(8px); }
+    60% { filter: blur(0); }
+    100% { opacity: 1; filter: blur(0); }
+  }
+
   .contact-screen .screen-inner {
     display: grid;
     grid-template-columns: 1fr minmax(320px, 0.76fr);
@@ -533,7 +723,7 @@
 
   .contact-card h3 {
     margin-bottom: 18px;
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .contact-links { flex-direction: column; }
@@ -657,6 +847,7 @@
     .screen { min-height: 100svh; padding: 34px 22px; overflow: visible; }
     .screen::before { inset: 10px; border-radius: 24px; }
     .intro-grid,
+    .references-grid,
     .cred-grid,
     .contact-screen .screen-inner {
       grid-template-columns: 1fr;
@@ -738,6 +929,25 @@
       grid-template-columns: 1fr;
       gap: 10px;
     }
+    .references-intro {
+      text-align: center;
+    }
+    .references-intro h2 {
+      font-size: clamp(34px, 9vw, 50px);
+    }
+    .intro-rule {
+      margin-inline: auto;
+    }
+    .reference-cards {
+      columns: 1;
+    }
+    .reference-card {
+      margin-bottom: 18px;
+      padding-top: 14px;
+    }
+    .reference-card blockquote {
+      font-size: clamp(19px, 5vw, 24px);
+    }
     .cred-row-label {
       font-size: 12px;
       gap: 6px;
@@ -790,10 +1000,10 @@
     .universe-header {
       top: 34px;
       left: 44px;
-      max-width: 260px;
+      max-width: 320px;
     }
     .universe-header h2 {
-      font-size: clamp(50px, 6vw, 68px);
+      font-size: clamp(40px, 4.6vw, 64px);
     }
     .portrait-universe {
       width: min(1040px, 88vw);
@@ -864,6 +1074,8 @@
     .site-pills a,
     .mini-pill { justify-content: center; min-height: 36px; padding: 6px 12px; }
     .orbit-list { grid-template-columns: 1fr; gap: 8px; }
+    .reference-label { font-size: 12px; letter-spacing: 0.2px; }
+    .reference-card blockquote { font-size: clamp(18px, 5.4vw, 22px); }
     .contact-links a { align-items: flex-start; }
   }
 
@@ -892,12 +1104,12 @@
   <section class="screen intro-screen" id="intro" aria-labelledby="intro-title">
     <div class="screen-inner intro-grid">
       <div class="intro-name">
-        <h1 id="intro-title">Rana Mallah</h1>
-        <p class="tagline">Economist by training, advisor and investor by trade, builder by instinct.</p>
+        <h1 id="intro-title" data-reveal>Rana Mallah</h1>
+        <p class="tagline" data-reveal style="--reveal-delay: 160ms">Economist by training, advisor and investor by trade, builder by instinct.</p>
       </div>
       <div class="intro-copy">
-        <p class="bio">Hi, I'm Rana. I thrive on the kind of challenge that pulls me into a flow state: when things are messy and the stakes are high. My instinct is to make sense of the system first, then work my way through it iteratively: testing, building, learning, and looking for the more original answer. I trained as an economist, spent a couple of years in the middle of post-pandemic financial markets at a hedge fund, then consulting taught me how to really influence people. I move between the big picture and the detail, and I'd take first-principles thinking over a playbook any day. Outside work, you'll find me at a rave, off travelling somewhere new, or out biking on the trails.</p>
-        <nav class="site-pills" aria-label="Rana Mallah links">
+        <p class="bio" data-reveal style="--reveal-delay: 90ms">I do my best work when things are messy and the stakes are high. I spent two years trading post-pandemic markets at a hedge fund, then consulting taught me how to influence people. I move between the big picture and the detail, and am comfortable using first-principles over a playbook. Outside work, you'll find me at a rave, off travelling somewhere new, or out biking on the trails.</p>
+        <nav class="site-pills" aria-label="Rana Mallah links" data-reveal style="--reveal-delay: 240ms">
           <a href="mailto:861np3sti@mozmail.com">Email</a>
           <a href="https://lodestone.digital" target="_blank" rel="noopener">lodestone.digital</a>
           <a href="https://github.com/icecat2005" target="_blank" rel="noopener">GitHub</a>
@@ -907,65 +1119,114 @@
       </div>
     </div>
     <p class="scroll-note">Scroll for the work universe</p>
-    <span class="screen-count">01 / 04</span>
+    <span class="screen-count">01 / 05</span>
   </section>
 
   <section class="screen universe-screen" id="work" aria-labelledby="work-title">
     <div class="universe-header">
-      <h2 id="work-title">Selected work</h2>
+      <h2 id="work-title" data-reveal>Selected work</h2>
+      <div class="intro-rule" data-reveal style="--reveal-delay: 220ms" aria-hidden="true"></div>
     </div>
 
     <div class="portrait-universe">
-      <div class="portrait-anchor" aria-hidden="true">
+      <div class="portrait-anchor" data-reveal="fade" style="--reveal-delay: 120ms" aria-hidden="true">
         <div class="portrait-disc"></div>
         <img class="portrait" src="cv-assets/professional-portrait-20220203.png" alt="" />
       </div>
 
       <div class="orbit-list" aria-label="Project detail controls">
-        <button class="orbit-pill pos-1" type="button" data-modal="ai-agents" aria-haspopup="dialog" aria-label="Built model-risk validation agents, McKinsey">
+        <button class="orbit-pill pos-1" type="button" data-reveal="fade" style="--reveal-delay: 260ms" data-modal="ai-agents" aria-haspopup="dialog" aria-label="Built model-risk validation agents, McKinsey">
           <span class="logo-mark mck" aria-hidden="true"></span>
           <span class="pill-copy"><span class="pill-label">Built model-risk validation agents</span></span>
         </button>
-        <button class="orbit-pill pos-2" type="button" data-modal="biopharma" aria-haspopup="dialog" aria-label="Assessed biopharma AI data readiness, McKinsey">
+        <button class="orbit-pill pos-2" type="button" data-reveal="fade" style="--reveal-delay: 320ms" data-modal="biopharma" aria-haspopup="dialog" aria-label="Assessed biopharma AI data readiness, McKinsey">
           <span class="logo-mark mck" aria-hidden="true"></span>
           <span class="pill-copy"><span class="pill-label">Assessed biopharma AI data readiness</span></span>
         </button>
-        <button class="orbit-pill pos-3" type="button" data-modal="stablecoin" aria-haspopup="dialog" aria-label="Shaped stablecoin joint venture strategy, McKinsey">
+        <button class="orbit-pill pos-3" type="button" data-reveal="fade" style="--reveal-delay: 380ms" data-modal="stablecoin" aria-haspopup="dialog" aria-label="Shaped stablecoin joint venture strategy, McKinsey">
           <span class="logo-mark mck" aria-hidden="true"></span>
           <span class="pill-copy"><span class="pill-label">Shaped stablecoin JV strategy</span></span>
         </button>
-        <button class="orbit-pill pos-4" type="button" data-modal="rates" aria-haspopup="dialog" aria-label="Called the rate-hiking cycle, SPX Capital">
+        <button class="orbit-pill pos-4" type="button" data-reveal="fade" style="--reveal-delay: 440ms" data-modal="rates" aria-haspopup="dialog" aria-label="Called the rate-hiking cycle, SPX Capital">
           <img class="logo-mark spx" src="cv-assets/logo-spx.png" alt="" />
           <span class="pill-copy"><span class="pill-label">Called the rate-hiking cycle</span></span>
         </button>
-        <button class="orbit-pill pos-5" type="button" data-modal="frontier" aria-haspopup="dialog" aria-label="Ran sessions on frontier ideas, Newspeak House and ACX">
+        <button class="orbit-pill pos-5" type="button" data-reveal="fade" style="--reveal-delay: 500ms" data-modal="frontier" aria-haspopup="dialog" aria-label="Ran sessions on frontier ideas, Newspeak House and ACX">
           <span class="logo-mark news-logo" aria-hidden="true"></span>
           <span class="pill-copy"><span class="pill-label">Ran sessions on frontier ideas</span></span>
         </button>
-        <button class="orbit-pill pos-6" type="button" data-modal="challenge" aria-haspopup="dialog" aria-label="Put my thinking up for challenge, Manifest and LessOnline">
+        <button class="orbit-pill pos-6" type="button" data-reveal="fade" style="--reveal-delay: 560ms" data-modal="challenge" aria-haspopup="dialog" aria-label="Put my thinking up for challenge, Manifest and LessOnline">
           <img class="logo-mark community" src="cv-assets/logo-community.png" alt="" />
           <span class="pill-copy"><span class="pill-label">Put my thinking up for challenge</span></span>
         </button>
-        <button class="orbit-pill builder pos-7" type="button" data-modal="lodestone" aria-haspopup="dialog">
-          <span class="logo-mark text-logo" aria-hidden="true">L</span>
-          <span class="pill-copy"><span class="pill-label">Building Lodestone</span><span class="pill-org">Founder / developer</span></span>
+        <button class="orbit-pill pos-7" type="button" data-reveal="fade" style="--reveal-delay: 620ms" data-modal="crypto" aria-haspopup="dialog" aria-label="Shorted hype-driven crypto tokens, independent trading 2021-2022">
+          <span class="logo-mark text-logo neutral" aria-hidden="true">&#8383;</span>
+          <span class="pill-copy"><span class="pill-label">Shorted hype-driven tokens</span></span>
         </button>
-        <button class="orbit-pill builder pos-8" type="button" data-modal="maestro" aria-haspopup="dialog">
+        <button class="orbit-pill builder pos-8" type="button" data-reveal="fade" style="--reveal-delay: 680ms" data-modal="maestro" aria-haspopup="dialog">
           <span class="logo-mark text-logo" aria-hidden="true">M</span>
           <span class="pill-copy"><span class="pill-label">Project Maestro</span><span class="pill-org">Founder / developer</span></span>
         </button>
       </div>
     </div>
-    <span class="screen-count">02 / 04</span>
+    <span class="screen-count">02 / 05</span>
+  </section>
+
+  <section class="screen references-screen" id="references" aria-labelledby="references-title">
+    <div class="screen-inner references-grid">
+      <div class="references-intro">
+        <h2 id="references-title">Trusted to own hard problems</h2>
+        <div class="intro-rule" aria-hidden="true"></div>
+      </div>
+      <div class="reference-cards" aria-label="Review excerpts">
+        <article class="reference-card">
+          <div class="reference-head">
+            <span class="reference-index" aria-hidden="true">01</span>
+            <p class="reference-label">Partners, McKinsey</p>
+          </div>
+          <blockquote>Rana has <strong>&ldquo;top notch ownership and commitment,&rdquo;</strong> can <strong>&ldquo;lead the process to get to the outcomes,&rdquo;</strong> and takes initiative on how work will be handed over so it becomes useful beyond the project.</blockquote>
+        </article>
+        <article class="reference-card">
+          <div class="reference-head">
+            <span class="reference-index" aria-hidden="true">02</span>
+            <p class="reference-label">Partner, McKinsey</p>
+          </div>
+          <blockquote>Rana is an <strong>&ldquo;excellent digital translator&rdquo;</strong> across process and technical flows, and has been the <strong>&ldquo;go-to person&rdquo;</strong> for understanding complex emerging topics.</blockquote>
+        </article>
+        <article class="reference-card">
+          <div class="reference-head">
+            <span class="reference-index" aria-hidden="true">03</span>
+            <p class="reference-label">Engagement Manager, McKinsey</p>
+          </div>
+          <blockquote>On a hard, high-intensity study, feedback was: <strong>&ldquo;If I had staffed any other McKinsey associate, we would not have been successful.&rdquo;</strong> Rana <strong>&ldquo;delivers quality output&rdquo;</strong> under pressure.</blockquote>
+        </article>
+        <article class="reference-card">
+          <div class="reference-head">
+            <span class="reference-index" aria-hidden="true">04</span>
+            <p class="reference-label">Associate Partner, McKinsey</p>
+          </div>
+          <blockquote>Rana is <strong>&ldquo;very credible and fearless with clients,&rdquo;</strong> <strong>&ldquo;convincing and assertive,&rdquo;</strong> and can <strong>&ldquo;synthesise insights impressively well&rdquo;</strong> in a short timeframe.</blockquote>
+        </article>
+        <article class="reference-card">
+          <div class="reference-head">
+            <span class="reference-index" aria-hidden="true">05</span>
+            <p class="reference-label">Partners, McKinsey</p>
+          </div>
+          <blockquote><strong>&ldquo;Rana&rsquo;s towering strength is problem solving, especially on conceptual topics.&rdquo;</strong> She is <strong>&ldquo;analytically very very very strong&rdquo;</strong> and can <strong>&ldquo;issue tree very clearly.&rdquo;</strong></blockquote>
+        </article>
+      </div>
+    </div>
+    <span class="screen-count">03 / 05</span>
   </section>
 
   <section class="screen credentials-screen" id="credentials" aria-labelledby="credentials-title">
     <div class="screen-inner cred-grid">
       <div class="cred-intro">
-        <h2 id="credentials-title">Where I worked and studied</h2>
+        <h2 id="credentials-title" data-reveal>Where I worked and studied</h2>
+        <div class="intro-rule" data-reveal style="--reveal-delay: 200ms" aria-hidden="true"></div>
       </div>
       <div class="cred-cards" aria-label="Companies and education">
-        <p class="cred-row-label">
+        <p class="cred-row-label" data-reveal style="--reveal-delay: 120ms">
           <svg class="cred-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
             <path d="M9 7V5.8C9 4.8 9.8 4 10.8 4h2.4c1 0 1.8.8 1.8 1.8V7" />
             <path d="M4.5 8h15v10.5h-15z" />
@@ -974,7 +1235,7 @@
           </svg>
           Employers
         </p>
-        <article class="cred-card work">
+        <article class="cred-card work" data-reveal style="--reveal-delay: 200ms">
           <p class="date">Sep 2022 - Present</p>
           <h3>McKinsey &amp; Company</h3>
           <p class="role">
@@ -989,7 +1250,7 @@
           </p>
           <p class="meta">London</p>
         </article>
-        <article class="cred-card work">
+        <article class="cred-card work" data-reveal style="--reveal-delay: 280ms">
           <p class="date">Sep 2020 - Jul 2022</p>
           <h3>SPX Capital</h3>
           <p class="role">
@@ -1004,7 +1265,7 @@
           </p>
           <p class="meta">London</p>
         </article>
-        <p class="cred-row-label">
+        <p class="cred-row-label" data-reveal style="--reveal-delay: 360ms">
           <svg class="cred-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
             <path d="M5 5.5h9a4 4 0 0 1 4 4V19H8.5A3.5 3.5 0 0 1 5 15.5z" />
             <path d="M8.5 19A3.5 3.5 0 0 1 5 15.5V5.5" />
@@ -1013,7 +1274,7 @@
           </svg>
           Education
         </p>
-        <article class="cred-card education">
+        <article class="cred-card education" data-reveal style="--reveal-delay: 440ms">
           <p class="date">2017 - 2020</p>
           <h3>London School of Economics</h3>
           <p class="role">
@@ -1035,7 +1296,7 @@
             </span>
           </p>
         </article>
-        <article class="cred-card education">
+        <article class="cred-card education" data-reveal style="--reveal-delay: 520ms">
           <p class="date">2016 - 2017</p>
           <h3>York College</h3>
           <p class="role">
@@ -1055,15 +1316,16 @@
         </article>
       </div>
     </div>
-    <span class="screen-count">03 / 04</span>
+    <span class="screen-count">04 / 05</span>
   </section>
 
   <section class="screen contact-screen" id="contact" aria-labelledby="contact-title">
     <div class="screen-inner">
       <div>
-        <h2 id="contact-title">Let's solve something hard together</h2>
+        <h2 id="contact-title" data-reveal>Let's solve something hard together</h2>
+        <div class="intro-rule" data-reveal style="--reveal-delay: 220ms" aria-hidden="true"></div>
       </div>
-      <aside class="contact-card" aria-label="Contact links">
+      <aside class="contact-card" data-reveal style="--reveal-delay: 120ms" aria-label="Contact links">
         <h3>Find me here</h3>
         <nav class="contact-links">
           <a href="mailto:861np3sti@mozmail.com"><span>Email</span><span>Email me</span></a>
@@ -1074,7 +1336,7 @@
         </nav>
       </aside>
     </div>
-    <span class="screen-count">04 / 04</span>
+    <span class="screen-count">05 / 05</span>
   </section>
 </main>
 
@@ -1151,11 +1413,14 @@
   </dl>
 </template>
 
-<template id="modal-lodestone">
-  <p class="modal-kicker">WIP · lodestone.digital</p>
-  <h3 id="modal-title">Building Lodestone, a project-level AI operating system</h3>
-  <p>A persistent AI operating system deployed at the project level - it ingests every signal, updates every output, and compounds quality each daily cycle, so the team can focus on being in the room and making decisions.</p>
-  <p><a href="https://lodestone.digital" target="_blank" rel="noopener">lodestone.digital</a></p>
+<template id="modal-crypto">
+  <p class="modal-kicker">Independent · 2021&ndash;2022</p>
+  <h3 id="modal-title">Shorted hype-driven crypto by forecasting community momentum</h3>
+  <dl>
+    <dt>Nature of work</dt><dd>Traded crypto on a thesis that token value was driven by community hype and narrative rather than fundamentals.</dd>
+    <dt>Approach</dt><dd>Followed Discord / DAO communities to read momentum early, and assessed the probability of hype forming - or fading - around a given token or coin.</dd>
+    <dt>Impact</dt><dd>Turned that signal into directional positions and successfully shorted multiple tokens through the 2022 drawdown.</dd>
+  </dl>
 </template>
 
 <template id="modal-maestro">
@@ -1190,6 +1455,19 @@
       modal.close();
     }
   });
+
+  const revealScreens = document.querySelectorAll('main .screen');
+  if ('IntersectionObserver' in window && revealScreens.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('is-visible', entry.isIntersecting);
+      });
+    }, { threshold: 0.28 });
+    revealScreens.forEach((screen) => {
+      screen.classList.add('reveal-ready');
+      revealObserver.observe(screen);
+    });
+  }
 </script>
 </body>
 </html>
