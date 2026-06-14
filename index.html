@@ -400,8 +400,12 @@
   .orbit-pill.pos-4 { top: 33%; right: -15%; transform: rotate(-4deg); }
   .orbit-pill.pos-5 { bottom: 27%; left: -12%; transform: rotate(-2deg); }
   .orbit-pill.pos-6 { bottom: 25%; right: -12%; transform: rotate(3deg); }
-  .orbit-pill.pos-7 { bottom: 5%; left: 12%; transform: rotate(4deg); }
-  .orbit-pill.pos-8 { bottom: 5%; right: 12%; transform: rotate(-3deg); }
+  .orbit-pill.pos-7 { bottom: 5%; left: 6%; transform: rotate(4deg); }
+  .orbit-pill.pos-8 { bottom: 5%; right: 6%; transform: rotate(-3deg); }
+  /* Bottom pair sits under the portrait where space is tightest: cap width so
+     long labels wrap instead of colliding (font-width independent). */
+  .orbit-pill.pos-7,
+  .orbit-pill.pos-8 { max-width: 470px; }
 
   .cred-grid {
     display: grid;
